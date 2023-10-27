@@ -1,0 +1,517 @@
+@import url("https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Young+Serif&display=swap");
+:root {
+  --sidebar-width: 200px;
+  --sidebar-height: 105px;/*レスポンシブ時に使用*/
+  --image-max-size-height: 842px;
+  --image-max-size-width: 596px; /**/
+  --default-font-size: 24px;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  /*スクロールをスムーズにする*/
+  scroll-behavior: smooth;
+}
+
+.container {
+  display: flex;
+}
+
+.sidebar {
+  position: fixed;
+  height: 100vh;
+  /*常にブラウザの高さに合わせる */
+  width: var(--sidebar-width);
+  background-color: #333;
+  color: #fff;
+  padding: 0em;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  z-index: 10;
+
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+.sidebar ul li {
+  margin: 0.5em 0;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+#myName {
+  margin-left: 8px;
+  font-size: 36px;
+  font-family: "Young Serif", serif;
+}
+
+.content {
+  flex: 1;
+  /* take remaining width */
+  padding: 1em;
+  font-size: 50px;
+  background-color: #f5f5f5;
+  /* sidebarの大きさに合わせ位置を調整する*/
+  margin-left: var(--sidebar-width);
+  padding: 1em;
+  background-color: #f5f5f5;
+  overflow-wrap:  break-word;
+}
+
+.flex-container {
+  display: flex;
+  /* 折り返し */
+  flex-wrap: wrap;
+  /* 間隔 */
+  gap: 30px;
+  margin-bottom: 64px;
+}
+
+.flex-item {
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  overflow: hidden;
+  /* border-radius（丸み）を画像にも適用 */
+  position: relative;
+}
+.skills {
+  display: flex;
+}
+.skill {
+  display: flex;
+  padding-right: 1%;
+}
+.skills img {
+  width: 70px;
+  height: auto;
+  object-fit: cover; /* 画像のアスペクト比を保持する */
+}
+.overlay-description {
+  display: none;
+}
+
+.flex-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+}
+
+.flex-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+}
+
+.overlay-hidden {
+  display: none;
+}
+
+.overlay-visible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* 半透明の黒 */
+  background-color: rgba(0, 0, 0, 0.8);
+  /*最前面に表示*/
+  z-index: 900;
+}
+#overlayContent,
+#overlayImage,
+#overlayVideo,
+#overlayImageDescription{
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+
+
+#overlayContent {
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+#overlayImage,
+#overlayVideo {
+  z-index: 999;
+}
+
+#overlayImageDescription,
+#overlayVideoDescription {
+  font-size: var(--default-font-size);
+  margin-left: 24px;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto; /* 縦方向のスクロールを有効にする */
+}
+
+
+h2 {
+  margin-top: 0px;
+  margin-bottom: 32px;
+}
+
+.profile-font {
+  font-size: var(--default-font-size);
+  line-height: 26px;
+  font-family: "BIZ UDPMincho", serif;
+}
+#profile1 {
+  min-height: 110px; /*フォントサイズ、行数、余白*/
+}
+#profile2 {
+  min-height: 134px;
+}
+
+.left-text {
+  text-align: left;
+  overflow-wrap:  break-word;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.center-text.margin-auto {
+  margin: 40px auto;
+}
+
+.large-text {
+  font-size: large;
+}
+
+.form-area {
+  font-size: 20px;
+}
+.google-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.google-form__item {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+
+.google-form__label,
+.google-form__input {
+  padding: 10px;
+}
+
+.google-form__label {
+  width: 90%;
+}
+
+.google-form__input {
+  width: 90%;
+  font-size: 16px;
+  border: solid 1px #333;
+  border-radius: 4px;
+}
+
+.google-form__input:focus-visible {
+  outline: green auto 1px;
+}
+
+.google-form__required {
+  color: #fff;
+  background-color: rgb(255, 178, 178);
+  border-radius: 4px;
+  padding: 5px 5px;
+  margin: 0px 0px 32px 4px;
+}
+
+textarea.google-form__input {
+  height: 160px;
+}
+
+.google-form__submit {
+  text-align: center;
+}
+
+.google-form__submit button {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: green;
+  border: solid 1px green;
+  border-bottom: solid 3px rgb(0, 100, 0);
+  border-right: solid 3px rgb(0, 100, 0);
+  border-radius: 4px;
+  padding: 5px 32px;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.google-form__submit button:hover {
+  color: green;
+  background-color: transparent;
+}
+
+.confirmNon {
+  display: none;
+}
+
+.confirm {
+  display: flex;
+}
+
+.thankYouOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* 半透明の黒 */
+  background-color: rgba(0, 0, 0, 0.7);
+  /*送信前は非表示*/
+  display: none;
+}
+
+/*レスポンシブ予定*/
+
+
+/*--------------------━━━━━━━━━━━━━━━━━━━━━━--------------------*/
+/*----------------------アニメーションクラス---------------------*/
+/*--------------------━━━━━━━━━━━━━━━━━━━━━━--------------------*/
+
+.line-anime {
+  background-color: none;
+  transition: background-color 0.5s, transform 0.5s;
+}
+
+.line-anime:hover {
+  background-color: aqua;
+  transform: scale(1.5, 1.5);
+}
+
+.item-anime {
+  background-color: none;
+  transition: background-color 0.5s, transform 0.5s;
+}
+
+.item-anime:hover {
+  transform: scale(1.2, 1.2);
+  /*前面に表示*/
+  z-index: 1;
+}
+
+.overlay-anime {
+  background-color: transparent;
+  transform: scale(0);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.overlay-anime.show {
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: scale(0.8);
+}
+.separator {
+  width: 90%;
+  height: 8px;
+  background-color: black;
+  text-align: center;
+  padding: 0px;
+  margin-bottom: 32px;
+  margin-top: 32px;
+  transform-origin: center;
+  transform: scaleX(0);
+  transition: ease transform 2s;
+}
+
+.separator.active {
+  transform: scaleX(1);
+}
+
+.rotateShake {
+  animation-name: rotateShakeKey;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(0.55, -0.38, 0.17, 1.41);
+  animation-fill-mode: forwards;
+}
+@keyframes rotateShakeKey {
+  0% {
+    opacity: 0;
+    scale: 0.2;
+    transform: rotate(10deg);
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    scale: 1;
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+@keyframes rotateBounceKey {
+  0% {
+    opacity: 0;
+    scale: 0.2;
+    transform: rotate(10deg);
+  }
+  100% {
+    scale: 1;
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+.kurukuruAnime {
+  opacity: 0;
+}
+.kurukuruAnime.active {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  animation: kurukuru 0.8s cubic-bezier(0.55, -0.38, 0.17, 1.41);
+  opacity: 1;
+}
+@keyframes kurukuru {
+  0% {
+    transform: rotateY(0) translateY(60px);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateY(360deg) translateY(0);
+    opacity: 1;
+  }
+}
+
+/*--------------------━━━━━━━━━━━━━━━━━━━━━━--------------------*/
+/*-------------------------レスポンシブ--------------------------*/
+/*--------------------━━━━━━━━━━━━━━━━━━━━━━--------------------*/
+
+
+@media (max-width: 520px) {
+  .sidebar {
+    position:absolute;
+    z-index: 998;
+    height: var(--sidebar-height);
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 0em;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+    justify-content: space-around;
+    overflow: hidden;
+    /* サイドバーのコンテンツが長すぎる場合のスクロール */
+  }
+  .sidebar ul {
+    display: flex;
+    list-style-type: none;
+    text-align: center;
+    justify-content: space-around;
+  }
+  
+  .sidebar ul li {
+    margin-left: 8px;
+    list-style: none;
+    font-size: large;
+  }
+  
+  .sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  #myName {
+    display: block;
+    text-align: center;
+    margin-left: 0px;
+    margin-right: 4px;
+    font-size: 36px;
+    font-family: "Young Serif", serif;
+  }
+  #profile1 {
+    min-height: 182px; /*フォントサイズ、行数、余白*/
+  }
+  #profile2 {
+    min-height: 282px;
+  }
+
+  .content {
+    display: flex;
+flex-direction: column;
+align-items: center;
+    /* take remaining width */
+    padding: 1em;
+    font-size: 50px;
+    background-color: #f5f5f5;
+    /* sidebarの大きさに合わせ位置を調整する*/
+    margin-top: var(--sidebar-height);
+    margin-left: 0px;
+    padding: 1em;
+    background-color: #f5f5f5;
+    width: 100%;
+  }
+  .skills{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .flex-container{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #overlayContent{
+    max-width: 100vh;
+   max-height: 96vh;
+   height: 100%;
+    flex-flow: column;
+    align-items: center;
+  }
+
+#overlayImage
+{
+  height: 50%;
+}
+
+
+.overlay-anime.show {
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: scale(0.9);
+}
+
+.google-form__item {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.google-form__label {
+  margin: 0px 0px 0px 4px;
+  width: 55%;
+}
+
+.google-form__input {
+  width: 55%;
+}
+
+}
+
+/*support by chatGPT*/
